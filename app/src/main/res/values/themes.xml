@@ -1,0 +1,35 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.BottomFragment" parent="Base.Theme.BottomFragment" />
+
+    <!-- Base application theme. -->
+    <style name="Base.Theme.BottomFragment" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@color/transparent</item>
+        <!--statusbar 컬러를 투명으로 변경 -->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <!--statusbar를 백그라운드 위에 그린다. statusbar 아래에 다른 뷰가 표시 될 수 있음. -->
+    </style>
+
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheet_background</item>
+    </style>
+
+
+    <style name="TransparentAppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/transparentBottomSheet</item>
+    </style>
+
+    <style name="transparentBottomSheet"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/transparent</item>
+    </style>
+
+</resources>
