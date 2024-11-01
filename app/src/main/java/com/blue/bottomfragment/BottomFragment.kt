@@ -1,6 +1,7 @@
 package com.blue.bottomfragment
 
 import android.app.Dialog
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,6 +15,7 @@ import com.blue.bottomfragment.databinding.FragmentBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import java.io.File
 
 
 class BottomFragment : BottomSheetDialogFragment() {
@@ -23,7 +25,6 @@ class BottomFragment : BottomSheetDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -42,5 +43,12 @@ class BottomFragment : BottomSheetDialogFragment() {
             behavior.skipCollapsed = true
         }
         return dialog
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.videoView.setVideoURI(Uri.parse("android.resource://" + context?.packageName + File.separator + R.raw.aurora_members))
+        binding.videoView.start()
     }
 }
