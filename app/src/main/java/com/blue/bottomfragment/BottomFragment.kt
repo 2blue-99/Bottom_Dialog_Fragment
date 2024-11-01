@@ -1,6 +1,7 @@
 package com.blue.bottomfragment
 
 import android.app.Dialog
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -23,16 +24,22 @@ class BottomFragment : BottomSheetDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentBottomSheetBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val url = Uri.parse("android.resource://"+ activity?.packageName + "/" + R.raw.test)
+        binding.videoView.setVideoURI(url)
+        binding.videoView.start()
     }
 
 
