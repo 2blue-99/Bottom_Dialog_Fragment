@@ -8,6 +8,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.LinearLayout
+import androidx.core.view.marginTop
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.blue.bottomfragment.databinding.FragmentABinding
 import com.blue.bottomfragment.databinding.FragmentBBinding
@@ -15,6 +19,7 @@ import com.blue.bottomfragment.databinding.FragmentBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.coroutines.launch
 
 
 class BottomFragment : BottomSheetDialogFragment() {
@@ -38,8 +43,21 @@ class BottomFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val url = Uri.parse("android.resource://"+ activity?.packageName + "/" + R.raw.test)
-        binding.videoView.setVideoURI(url)
-        binding.videoView.start()
+
+        val metrics = resources.displayMetrics
+        val screenHeight = metrics.heightPixels
+
+        binding.bottomSheet.layoutParams = binding.bottomSheet.layoutParams.apply {
+            height = screenHeight
+            lifecycleScope.launch {
+
+            }
+        }
+
+        binding.videoView.apply {
+            setVideoURI(url)
+            start()
+        }
     }
 
 
